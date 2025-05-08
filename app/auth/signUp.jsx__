@@ -1,0 +1,100 @@
+import { Text, View, Image, TextInput, StyleSheet, TouchableOpacity, Pressable} from 'react-native';
+import Colors from '../../constant/Colors';
+import { useRouter } from 'expo-router';
+
+export class signIn extends Component {
+  const router = useRouter();
+  render() {
+    
+    return (
+      <View style={{
+        display:'flex',
+        backgroundColor:Colors.WHITE,
+        alignItems:'center',
+        paddingTop:100,
+        flex:1,
+       
+      
+      }}>
+        <View>
+        <Image source={require('./../../assets/images/logo.png')} 
+        style={{
+          width:180,
+          height:180,
+        }}>
+        </Image>
+        </View>
+       <View>
+       <Text style={{
+          textAlign:'center',
+          fontFamily:'outfit-bold',
+          fontSize:20
+        }}>
+          Create New Account
+        </Text>
+
+       </View>
+
+       
+
+        <View style={{
+        marginTop:20
+        }}>
+          <TextInput placeholder='Enter Full name' style={styles.TextInput}/>
+          <TextInput placeholder='Enter Email' style={styles.TextInput}/>
+          <TextInput placeholder='Password' secureTextEntry ={true} style={styles.TextInput}/>
+
+          <TouchableOpacity style={{
+            marginTop:20,
+            width:'100%',
+            borderRadius:10,
+            padding:10,
+            backgroundColor:Colors.PRIMARY
+          }}>
+            <Text style={{
+              color:Colors.WHITE,
+              textAlign:'center',
+              fontFamily:'outfit',
+              fontSize:10
+
+            }}>Submit</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={{
+          display:'flex',
+          flexDirection:'row', gap:5,
+          marginTop:20
+        }}>
+          <Text style={{
+            fontFamily:'outfit',
+          }}>Already Have an Account ? </Text>
+          <Pressable style={{
+            fontFamily:'outfit-bold',
+            color:Colors.PRIMARY
+          }} {() => router.push('auth/signIn')}>Sign in</Pressable>
+        </View>
+      </View>
+    )
+  }
+}
+
+export default signUp
+
+const styles = StyleSheet.create({
+  TextInput:{
+    width:'100%',
+    borderWidth:1,
+    borderRadius:8,
+    padding:10,
+    fontFamily:'outfit',
+    fontSize:10,
+    marginTop:15,
+    borderColor:Colors.PRIMARY
+
+  }
+})
+
+
+
+
