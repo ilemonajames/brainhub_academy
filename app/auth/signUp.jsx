@@ -64,7 +64,7 @@ export default function SignUp() { // Changed to PascalCase for component name
     try {
       await setDoc(doc(db, 'users', user.uid), // use id as document
       data);
-
+      setUserDetail(data); //called the setUserDetail function(Isaac)
 
 
     } catch (error) {
