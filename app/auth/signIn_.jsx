@@ -5,19 +5,27 @@ import { useRouter } from 'expo-router';
 import { auth } from './../../Config/firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from'react';
+import { getDoc } from 'firebase/firestore';
+import userDetailContext from '../../context/userDetailContext';
 
 export default function signIn() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const {userDetail , setUserDetail} = useContext(userDetailContext); // userDetail context
+  const [loading, setLoading]= useState(false); // to show the loading icon
 
   const onSignInClick = () => {
+    setLoading(true);
     signInWithEmailAndPassword(auth, email, password)
      .then( async (resp) => {
      const user = resp.user;
        
        // await getUserDetails(user.uid);
-        console.log( user.email + ' User signed in successfully');
+       console.log(user.email + ' User signed in successfully');
+       await getUserDetail();
+       setLoading(false);
+       router.replace('/(tabs)/home') //replace instead of push so it doesn't go to previous page
        // router.push('home');
       })
      .catch((error) => {
@@ -27,9 +35,15 @@ export default function signIn() {
           backgroundColor: Colors.RED,
           position: ToastAndroid.BOTTOM,
       });
+        setLoading(false);  // setloading call
       });
       
   };
+  const getUserDetail= async()=>{ //get user detail function
+        const result = await getDoc(doc(db, 'users', user.uid));
+        console.log(result.data())
+        setUserDetail(result.data) // setting user detail
+  }
 
   return (
     <View style={styles.container}>
@@ -46,9 +60,13 @@ export default function signIn() {
         <TextInput placeholder='Password' secureTextEntry={true} style={styles.TextInput} value={password} onChangeText={setPassword} />
        
         <TouchableOpacity style={styles.submitButton} 
-        onPress={onSignInClick}>
-          <Text style={styles.submitButtonText}>Submit</Text>
-        </TouchableOpacity>
+        onPress={onSignInClick}
+        disabled={loading} /* disable button while loading is true */> 
+          {loading?
+          <Text style={styles.submitButtonText}>Submit</Text>:
+          <ActivityIndicator size={'large'} color={Colors.WHITE} /> /* loading icon */
+          }
+          </TouchableOpacity>
         </View>
       </View>
       <View style={styles.accountTextContainer}>
