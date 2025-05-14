@@ -1,7 +1,7 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
 import { useRouter } from 'expo-router'
-import Button from '../Home/Shared/Button.jsx'
+import Button from '../Shared/Button.jsx'
 import Colors from '../../constant/Colors.jsx'
 
 export default function NoCourse() {
