@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, ActivityIndicator } from 'react-native'
 import React from 'react'
-import Colors from '../../../constant/Colors.jsx'
+import Colors from '../../constant/Colors.jsx'
 
 
 export default function Button({text, type="fill", onPress, loading}) {
