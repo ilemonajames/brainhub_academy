@@ -175,12 +175,13 @@ export default function AddCourse() {
       //save course info to dataase
     
       courses1?.forEach(async(course)=>{
-        await setDoc(doc(db, 'Courses', Date.now().toString()),{
-
+        const docId=Date.now().toString()
+        await setDoc(doc(db, '', docId),{
+          
           ...course,
           createdOn:new Date(),
           createdBy: userDetail?.uid,
-
+          docId:docId
         })
       })
 
@@ -189,7 +190,7 @@ export default function AddCourse() {
         setLoading(false);
     }
       router.push('/(tabs)/home')
-      // console.log(courses)
+      // console.log()
       
     }
   return (
