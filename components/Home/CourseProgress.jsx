@@ -5,13 +5,20 @@ import Colors from '../../constant/Colors'
 import * as Progress from 'react-native-progress';
 
 export default function CourseProgress({courseList}) {
+    const GetCompletedChapters=(course)=>{
+        const completedChapter=course?.completedChapter?.length;
+        const perc=completedChapter/course?.chapters?.length;
+    
+        return perc
+      }
   return (
     <View style={{
         marginTop: 10
     }}>
       <Text style={{
         fontFamily: 'outfit-bold',
-        fontSize: 25
+        fontSize: 25,
+        color:Colors.WHITE
       }}>Progress</Text>
       <FlatList
       horizontal={true}
@@ -21,7 +28,7 @@ export default function CourseProgress({courseList}) {
         <View style={{
             margin: 7,
             padding: 15,
-            backgroundColor: Colors.BG_GRAY,
+            backgroundColor: Colors.WHITE,
             borderRadius: 15,
             width: 280
         }}>
@@ -57,11 +64,11 @@ export default function CourseProgress({courseList}) {
                 marginTop: 10,
 
             }}>
-                    <Progress.Bar progress={0} width={250} />
+                    <Progress.Bar progress={GetCompletedChapters(item)} width={250} />
                     <Text style={{
                         fontFamily: 'outfit',
                         marginTop: 2
-                    }}> 3 out of 5 chapters completed</Text>
+                    }}> {item?.completedChapter?.length??0} out of {item?.chapters?.length} chapters completed</Text>
                 </View>
         </View>
   )}

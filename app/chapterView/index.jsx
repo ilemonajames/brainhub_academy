@@ -26,7 +26,7 @@ export default function index() {
 
 
         setLoader(false)
-        router.back();
+        router.replace('/courseView/'+docId);
         //Go Back
     }
   return (

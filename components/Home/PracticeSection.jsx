@@ -1,16 +1,19 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { FlatList } from 'react-native'
 import { PracticeOption } from '../../constant/Option'
 import Colors from '../../constant/Colors'
+import { useRouter } from 'expo-router'
 export default function PracticeSection() {
+  const router= useRouter();
   return (
     <View style={{
         marginTop: 10
     }}>
       <Text style={{
         fontFamily:'outfit-bold',
-        fontSize: 25
+        fontSize: 25,
+        
       }} 
       >Practice Section</Text>
       <View>
@@ -19,7 +22,7 @@ export default function PracticeSection() {
         numColumns={3}
         showsVerticalScrollIndicator={false}
         renderItem={({item,index})=>(
-            <View key={index} style={{
+            <TouchableOpacity onPress={()=>router.push('/practice/'+item.name)} key={index} style={{
                 flex: 1,
                 margin: 5,
                 aspectRatio: 1
@@ -37,7 +40,7 @@ export default function PracticeSection() {
                     fontSize: 15,
                     color: Colors.WHITE
                 }}>{item.name}</Text>
-            </View>
+            </TouchableOpacity>
         )}/>
       </View>
     </View>
