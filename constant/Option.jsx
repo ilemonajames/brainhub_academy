@@ -1,4 +1,4 @@
-export const PraticeOption = [
+export const PracticeOption = [
     {
         name: 'Quiz',
         image: require('./../assets/images/quizz.png'),
