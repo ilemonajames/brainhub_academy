@@ -9,7 +9,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import {db} from './../../../Config/firebaseConfig'
 export default function CourseView() {
 
-    const {courseParams, courseid} = useLocalSearchParams();
+    const {courseParams, courseid, enroll} = useLocalSearchParams();
     const [course, setCourse]=useState([]);
     // const course = JSON.parse(courseParams);
     // console.log(courseParams);
@@ -37,7 +37,7 @@ export default function CourseView() {
             flex: 1,
             backgroundColor: Colors.WHITE,
         }}>
-      <Intro course={course}/>
+      <Intro course={course} enroll={enroll}/>
       <Chapters course={course}/>
     </View>
       }

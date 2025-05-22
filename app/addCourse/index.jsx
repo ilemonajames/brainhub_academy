@@ -161,13 +161,13 @@ export default function AddCourse() {
   const model = 'gemini-2.0-flash';
   const contents = [PROMPT];
 
-  const response = await ai2.models.generateContent({
+  const response2 = await ai2.models.generateContent({
     model,
     config,
     contents,
   });
   try{
-  const aipet=response;
+  const aipet=response2;
   const resp = JSON.parse(aipet.text);
   const courses1 = resp.courses;
   console.log(courses1);
@@ -176,7 +176,7 @@ export default function AddCourse() {
     
       courses1?.forEach(async(course)=>{
         const docId=Date.now().toString()
-        await setDoc(doc(db, '', docId),{
+        await setDoc(doc(db, 'Courses', docId),{
           
           ...course,
           createdOn:new Date(),
