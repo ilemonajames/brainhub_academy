@@ -125,7 +125,7 @@ export default function Quiz() {
         ))}
         </View>
           
-        {(selectedOption != null && (quiz?.length - 1)>currentPage) && <Button text={'next'} onPress={()=>{setCurrentPage(currentPage+1); setSelectedOption(null)}}/>}
+        {(selectedOption != null && (quiz?.length - 1)>currentPage) && <Button text='next' onPress={()=>{setCurrentPage(currentPage+1); setSelectedOption(null)}}/>}
           {(selectedOption!=null &&quiz?.length-1==currentPage) &&<Button text='Finish' loading={loading}
            onPress={()=> onQuizFinish()}
            />}

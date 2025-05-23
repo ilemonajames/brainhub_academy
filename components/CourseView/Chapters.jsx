@@ -7,7 +7,7 @@ import { useRouter } from 'expo-router';
 export default function Chapters({course}) {
   const router = useRouter();
   const isChapterCompleted=(index)=>{
-    const isCompleted = course?.completedChapter.find(item=>item==index)
+    const isCompleted = course?.completedChapter?.find(item=>item==index)
     return isCompleted?true:false
   }
   return (
