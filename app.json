@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "btl_acad",
-    "slug": "btl_acad",
+    "name": "apexdemy",
+    "slug": "apexdemy",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -16,7 +16,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.btl-acad"
+      "package": "com.apexdemy"
     },
     "web": {
       "bundler": "metro",
