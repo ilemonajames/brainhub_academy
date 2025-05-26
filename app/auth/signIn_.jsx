@@ -48,7 +48,7 @@ export default function signIn() {
   return (
     <View style={styles.container}>
       <View>
-        <Image source={require('./../../assets/images/logo.png')} style={styles.logo} />
+        <Image source={require('./../../assets/images/logo-dark.png')} style={styles.logo} />
       </View>
       <View>
         <Text style={styles.title}>

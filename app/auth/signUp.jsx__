@@ -17,7 +17,7 @@ export class signIn extends Component {
       
       }}>
         <View>
-        <Image source={require('./../../assets/images/logo.png')} 
+        <Image source={require('./../../assets/images/logo-dark.png')} 
         style={{
           width:180,
           height:180,

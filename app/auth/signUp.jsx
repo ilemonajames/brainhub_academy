@@ -76,7 +76,7 @@ export default function SignUp() { // Changed to PascalCase for component name
   return (
     <View style={styles.container}>
       <View>
-        <Image source={require('./../../assets/images/logo.png')} style={styles.logo} />
+        <Image source={require('./../../assets/images/logo-dark.png')} style={styles.logo} />
       </View>
       <View>
         <Text style={styles.title}>Create New Account</Text>

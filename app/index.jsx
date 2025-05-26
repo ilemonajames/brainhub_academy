@@ -49,7 +49,7 @@ export default function Index() {
           fontSize:30,
           fontFamily:'outfit-bold',
           textAlign:"center"
-        }}>Welcome to BTL Academy</Text>
+        }}>Welcome to Apexdemy</Text>
 
         <Text style={{
           color:Colors.WHITE,
