@@ -8,6 +8,7 @@ import { collection, getDocs, orderBy, query, where } from 'firebase/firestore';
 import { db } from '../../../Config/firebaseConfig';
 import { userDetailContext } from '../../../context/userDetailContext';
 import CourseListGrid from '../../../components/PracticeScreen/CourseListGrid';
+import { FlatList } from 'react-native';
 
 
 export default function PracticeTypeHomeScreen() {
@@ -40,7 +41,10 @@ export default function PracticeTypeHomeScreen() {
     }
     const router=useRouter();
   return (
-    <View>
+    <FlatList
+    data={[]}
+    ListHeaderComponent={
+      <View>
       <Image source={option.image} 
       style={{
         height: 200,
@@ -75,5 +79,6 @@ export default function PracticeTypeHomeScreen() {
       color={Colors.PRIMARY}/>}
       <CourseListGrid courseList={courseList} option={option}/>
     </View>
+    }/>
   )
 }

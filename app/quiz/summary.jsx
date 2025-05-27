@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import Colors from '../../constant/Colors';
 import Button from '../../components/Shared/Button';
-import { ScrollView } from 'react-native-web';
+import { ScrollView } from 'react-native';
 
 export default function QuizSummary() {
     const {quizResultParam}=useLocalSearchParams();
@@ -34,7 +34,7 @@ export default function QuizSummary() {
     data={[]}
     showsVerticalScrollIndicator={false}
     ListHeaderComponent={
-        <View>
+         <View>
         <Image source={require('./../../assets/images/wave.png')}
         style={{
             width: '100%',
@@ -112,7 +112,7 @@ export default function QuizSummary() {
                 renderItem={({item,index})=>{
                     const quizItem = item[1];
                     return (
-                    <View style={{
+                    <View key = {index} style={{
                         padding: 15,
                         borderWidth: 1,
                         marginTop: 5,
@@ -137,6 +137,7 @@ export default function QuizSummary() {
     </View>
     }
     />
+   
   )
 }
 

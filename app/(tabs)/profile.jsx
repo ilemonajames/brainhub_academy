@@ -67,7 +67,7 @@ export default function Profile() {
                   }}>Course Progress</Text>
                 </TouchableOpacity>
           
-          <TouchableOpacity  style={styles.profileop}>
+          <TouchableOpacity  style={styles.profileop} onPress={()=>router.push('/subscription')}>
                   <Text style={{
                     fontFamily: 'outfit',
                     fontSize: 20

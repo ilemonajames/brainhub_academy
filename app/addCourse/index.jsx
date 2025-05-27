@@ -5,7 +5,7 @@ import Button from '../../components/Shared/Button.jsx'
 import { useState,  useContext } from 'react'
 import Prompt from '../../constant/Prompt.jsx'
 import {db} from './../../Config/firebaseConfig.jsx'
-import { doc, setDoc } from 'firebase/firestore'
+import { collection, doc, getDocs, query, setDoc, where } from 'firebase/firestore'
 import { userDetailContext } from '../../context/userDetailContext.jsx'
 import { useRouter } from 'expo-router'
 
@@ -14,13 +14,36 @@ const { GoogleGenAI } = require('@google/genai');
 export default function AddCourse() {
     const [loading, setLoading]=useState(false);
     const [userInput, setUserInput]=useState('');
+    const [courseList, setCourseList] = useState([]);
     const [topics, setTopics]=useState([]);
     const [selectedTopics, setSelectedTopics]=useState([]);
     const {userDetail , setUserDetail} = useContext(userDetailContext);
     const router = useRouter();
+    const GetCourseList = async()=>{
+    const q = query(collection(db, 'Courses'), where('createdBy','==', userDetail?.uid));
+  const querySnapshot = await getDocs(q);
+  const result = [];
+
+  querySnapshot.forEach((doc) => {
+    result.push(doc.data());
+  });
+
+  setCourseList(result); // still update state for UI
+  return result;
+
+  }
     const onGenerateTopic= async()=>{
+      setLoading(true);
+      const list = await GetCourseList();
         //Get topic from Ai model
-        setLoading(true);
+        if(list?.length>=5){
+          console.log(list?.length)
+          setLoading(false);
+          router.push('/subscription')
+          return;
+        }
+        
+          
         const PROMPT=userInput+Prompt.IDEA;
        // const aiRep= // supposed to be the GeneratePromptAIModel function as in the video, but now I'm searching how to implement it
         // const topicIdea = aiRep.response.text();
@@ -131,6 +154,7 @@ export default function AddCourse() {
           // }
           setTopics(topicIdea);
         setLoading(false);
+        
 
         
     }
@@ -219,7 +243,7 @@ export default function AddCourse() {
       multiline={true}
       onChangeText={(value)=>setUserInput(value)}/>
 
-      <Button text={'Generate Topic'} type='outline' onPress={()=>onGenerateTopic()} loading={loading}/>
+      <Button text={'Generate Topic'} type='outline' onPress={()=> onGenerateTopic()} loading={loading}/>
     <View style={{
       marginBottom:10,
       marginTop: 15

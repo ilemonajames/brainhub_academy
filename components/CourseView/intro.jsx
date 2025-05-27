@@ -15,6 +15,10 @@ export default function intro({course, enroll}) {
     const {userDetail, setUserDetail}=useContext(userDetailContext);
     const [loading, setLoading] = useState(false)
     const onEnrollCourse= async()=>{
+      if(userDetail?.member==false){
+          router.push('/subscription')
+          return;
+      }
       setLoading(true)
         const docId=Date.now().toString();
         const data={

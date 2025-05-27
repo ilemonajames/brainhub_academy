@@ -6,6 +6,8 @@ export default {
     BLACK: '#000',
     GREEN: '#24b351',
     LIGHT_GREEN: '#dbffdd',
-    RED: '#ad1cfc',
-    LIGHT_RED: '#e18df9'
+    // RED: '#ad1cfc',
+    // LIGHT_RED: '#e18df9'
+    RED: '#f51c0c',
+    LIGHT_RED: '#ffc8c4'
 }

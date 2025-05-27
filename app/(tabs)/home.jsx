@@ -26,7 +26,7 @@ export default function Home() {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       // setCourseList((prev)=>[...prev, doc.data()])
-      console.log(doc.data())
+      // console.log(doc.data())
       setCourseList(prev=>[...prev,doc.data()])
     });
       setLoading(false);
