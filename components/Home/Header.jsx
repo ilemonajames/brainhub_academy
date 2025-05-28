@@ -4,8 +4,10 @@ import {useContext} from 'react'
 import {userDetailContext} from './../../context/userDetailContext'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Colors from '../../constant/Colors';
+import { useRouter } from 'expo-router';
 
 export default function Header() {
+  const router = useRouter();
     const {userDetail, setUserDetail} = useContext(userDetailContext)
     console.log({userDetail})
 
@@ -32,7 +34,7 @@ export default function Header() {
       }}>Let's Get Started</Text>
       </View>
       <TouchableOpacity>
-      <Ionicons name="settings-outline" size={30} color="black" />
+      <Ionicons name="settings-outline" size={30} color="black" onPress={()=> router.push('/(tabs)/profile')} />
       </TouchableOpacity>
     </View>
   )
