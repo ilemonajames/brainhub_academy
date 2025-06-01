@@ -2,9 +2,13 @@ import { View, Text, StyleSheet, Image, Pressable, TouchableOpacity, Dimensions 
 import React, { useContext } from 'react'
 import Colors from '../../constant/Colors'
 import { userDetailContext } from '../../context/userDetailContext'
+import { PaystackProvider, usePaystack } from 'react-native-paystack-webview'
+import Payment from '../../components/payment'
 
 export default function SubscriptionPage() {
     const {userDetail, setUserDetail}= useContext(userDetailContext);
+
+    
   return (
     <View style={{
         backgroundColor: Colors.BG_GRAY,
@@ -31,42 +35,11 @@ export default function SubscriptionPage() {
                       color: Colors.GRAY
                     }}>{userDetail?.email}</Text>
                   </View>
-
-            <View style={{
-                backgroundColor: Colors.BG_GRAY,
-              width:'100%'
-
-            }}>
-                <Text style={{
-                    fontFamily: 'outfit',
-                    fontSize:20,
-                    textAlign: 'center',
-                    marginTop: 20
-                }}>This fee will be billed monthly</Text>
-                <TouchableOpacity style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    backgroundColor: Colors.WHITE,
-                    borderRadius: 25,
-                    padding: 15,
-                    textAlign: 'left',
-                    borderWidth:2,
-                    borderColor:Colors.BLACK,
-                    width:Dimensions.get('screen').width*0.95,
-                    margin:10
-                }}>
-                    
-                        <Text style={{
-                        fontFamily: 'outfit-bold',
-                        fontSize: 25,                        
-                    }}>Monthly payment of:</Text>
-                        <Text style={{
-                        fontFamily: 'outfit',
-                        fontSize: 20,
-                    }}>5$</Text>
-                    
-                </TouchableOpacity>
-            </View>
+<PaystackProvider debug publicKey='pk_test_d9f1fdfa4a678d16b9e41cbb5dc9d39d66434875' currency='NGN'
+defaultChannels={['card', 'mobile_money']}>
+            <Payment/>
+</PaystackProvider>
+            
     </View>
     
   )

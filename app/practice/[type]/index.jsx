@@ -1,4 +1,4 @@
-import { View, Text, Image, Pressable, ActivityIndicator } from 'react-native'
+import { View, Text, Image, Pressable, ActivityIndicator, ScrollView } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import { imageAssets, PracticeOption } from '../../../constant/Option';
@@ -41,10 +41,9 @@ export default function PracticeTypeHomeScreen() {
     }
     const router=useRouter();
   return (
-    <FlatList
-    data={[]}
-    ListHeaderComponent={
-      <View>
+    <FlatList data={[]}
+    ListHeaderComponent={ 
+    <View>
       <Image source={option.image} 
       style={{
         height: 200,
@@ -58,7 +57,7 @@ export default function PracticeTypeHomeScreen() {
         gap: 10,
         alignItems: 'center'
       }}>
-        <Pressable onPress={()=>router.back()}>  <Ionicons name="arrow-back" size={24} color="black" style={{
+        <Pressable onPress={()=>router.back()}><Ionicons name="arrow-back" size={24} color="black" style={{
             backgroundColor: Colors.WHITE,
             padding: 6,
             borderRadius: 10
@@ -78,7 +77,8 @@ export default function PracticeTypeHomeScreen() {
       }}
       color={Colors.PRIMARY}/>}
       <CourseListGrid courseList={courseList} option={option}/>
-    </View>
-    }/>
+    </View>}
+     
+    />
   )
 }
