@@ -8,6 +8,7 @@ import { signOut } from 'firebase/auth'
 import { auth } from '../../Config/firebaseConfig'
 
 export default function Profile() {
+//const Profile = () =>{
   const {userDetail, setUserDetail}=useContext(userDetailContext);
   const router=useRouter();
   return (
@@ -88,7 +89,8 @@ export default function Profile() {
       </View>
     </View>}/>
   )
-}
+};
+//export default Profile;
 
 const styles = StyleSheet.create({
   container: {

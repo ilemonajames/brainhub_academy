@@ -11,6 +11,7 @@ import PracticeSection from '../../components/Home/PracticeSection'
 import CourseProgress from '../../components/Home/CourseProgress'
 
 export default function Home() {
+//const Home = () =>{
   
 
   const [courseList, setCourseList] = useState([]);
@@ -69,4 +70,5 @@ export default function Home() {
     }/>
     
   )
-}
+};
+//export default Home;

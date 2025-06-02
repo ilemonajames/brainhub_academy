@@ -8,6 +8,7 @@ import Colors from '../../constant/Colors';
 import { useRouter } from 'expo-router';
 
 export default function Progress() {
+//const Progress =()=>{
   const [courseList, setCourseList] = useState([]);
   const {userDetail, setUserDetail}= useContext(userDetailContext);
   const [loading, setLoading]= useState(false);
@@ -67,4 +68,5 @@ export default function Progress() {
       </View>
     </View>
   )
-}
+};
+//export default Progress;

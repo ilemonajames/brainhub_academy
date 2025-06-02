@@ -6,6 +6,7 @@ import { auth } from './../../Config/firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
 
+
 export default function logIn() {
   const router = useRouter();
   const [email, setEmail] = useState('');

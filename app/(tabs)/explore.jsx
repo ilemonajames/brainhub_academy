@@ -5,7 +5,7 @@ import { CourseCategory } from '../../constant/Option'
 import CourseListByCategory from '../../components/Explore/CourseListByCategory'
 
 export default function Explore() {
-
+//const Explore = () =>{
   
   return (
     <FlatList
@@ -40,4 +40,5 @@ export default function Explore() {
     </View>
     }/>
   )
-}
+};
+//export default Explore;
