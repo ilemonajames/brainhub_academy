@@ -7,7 +7,7 @@ import Prompt from '../../constant/Prompt.jsx'
 import {db} from './../../Config/firebaseConfig.jsx'
 import { collection, doc, getDocs, query, setDoc, where } from 'firebase/firestore'
 import { userDetailContext } from '../../context/userDetailContext.jsx'
-import { useRouter } from 'expo-router'
+import {useRouter} from 'expo-router'
 
 const { GoogleGenAI } = require('@google/genai');
 
