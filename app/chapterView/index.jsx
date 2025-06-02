@@ -7,7 +7,7 @@ import Button from '../../components/Shared/Button'
 import { updateDoc,doc, arrayUnion } from 'firebase/firestore';
 import {db} from '../../Config/firebaseConfig'
 
-export default function index() {
+export default function Index() {
     const {chapterParams, docId, chapterIndex} = useLocalSearchParams();
     const chapters = JSON.parse(chapterParams);
     const [currentPage, setCurrentPage] = useState(0);
