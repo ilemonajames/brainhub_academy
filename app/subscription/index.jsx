@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, Image, Pressable, TouchableOpacity, Dimensions 
 import React, { useContext } from 'react'
 import Colors from '../../constant/Colors'
 import { userDetailContext } from '../../context/userDetailContext'
+import { Alert } from 'react-native'
 
 
 export default function SubscriptionPage() {
@@ -45,7 +46,7 @@ export default function SubscriptionPage() {
                         textAlign: 'center',
                         marginTop: 20
                     }}>This fee will be billed monthly</Text>
-                    <TouchableOpacity style={{
+                    <TouchableOpacity onPress={()=>{Alert.alert("notification", "Paid!")}} style={{
                         display: 'flex',
                         justifyContent: 'space-between',
                         backgroundColor: Colors.WHITE,
