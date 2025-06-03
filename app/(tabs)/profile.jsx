@@ -28,7 +28,7 @@ export default function Profile() {
         backgroundColor: Colors.BG_GRAY
 
       }}>
-              <Image source={require('./../../assets/images/logo.png')} style={styles.logo} />
+              <Image source={require('./../../assets/images/logo-dark.png')} style={styles.logo} />
               <Text style={{
                 marginTop:0,
                 fontFamily: 'outfit-bold',
