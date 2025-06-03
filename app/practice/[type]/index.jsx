@@ -17,6 +17,7 @@ export default function PracticeTypeHomeScreen() {
     const option = PracticeOption.find(item=>item.name==type);
     const [loading, setLoading]= useState(false);
     const [courseList, setCourseList]=useState([]);
+    
     useEffect(()=>{
         userDetail&&GetCourseList();
     }, [userDetail])
@@ -54,7 +55,7 @@ export default function PracticeTypeHomeScreen() {
         gap: 10,
         alignItems: 'center'
       }}>
-        <Pressable onPress={()=>router.back()}>  <Ionicons name="arrow-back" size={24} color="black" style={{
+        <Pressable onPress={()=>router.back()}><Ionicons name="arrow-back" size={24} color="black" style={{
             backgroundColor: Colors.WHITE,
             padding: 6,
             borderRadius: 10

@@ -7,15 +7,36 @@ import Button from './../../components/Shared/Button';
 import { useRouter } from 'expo-router';
 import { useContext } from 'react';
 import {userDetailContext} from './../../context/userDetailContext'
-import { doc, setDoc } from 'firebase/firestore';
+import { collection, doc, getDocs, query, setDoc, where } from 'firebase/firestore';
 import { db } from '../../Config/firebaseConfig';
 
 export default function intro({course, enroll}) {
     const router = useRouter();
     const {userDetail, setUserDetail}=useContext(userDetailContext);
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
+    const [courseList, setCourseList] = useState([]);
+    const GetCourseList = async()=>{
+        const q = query(collection(db, 'Courses'), where('createdBy','==', userDetail?.uid));
+        const querySnapshot = await getDocs(q);
+        const result = [];
+
+          querySnapshot.forEach((doc) => {
+          result.push(doc.data());
+  });
+
+        setCourseList(result); // still update state for UI
+        return result;
+
+  }
     const onEnrollCourse= async()=>{
       setLoading(true)
+      const list = await GetCourseList();
+      if(list?.length>=5){
+          console.log(list?.length)
+          setLoading(false);
+          router.push('/subscription')
+          return;
+        }
         const docId=Date.now().toString();
         const data={
           ...course,
