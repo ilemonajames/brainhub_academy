@@ -66,7 +66,7 @@ export default function SubscriptionPage() {
                             <Text style={{
                             fontFamily: 'outfit',
                             fontSize: 20,
-                        }}>5$</Text>
+                        }}>₦1000</Text>
                         
                     </TouchableOpacity>
                 </View>
